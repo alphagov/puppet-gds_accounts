@@ -12,5 +12,6 @@ RSpec.configure do |c|
     puppet_install
     puppet_module_install(:source => proj_root, :module_name => 'gds_accounts')
     shell('puppet module install puppetlabs-stdlib')
+    shell('puppet module install torrancew-account')
   end
 end
