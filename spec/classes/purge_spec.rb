@@ -4,7 +4,7 @@ require 'spec_helper'
 describe 'gds_accounts' do
   let(:param_defaults) {{ }}
   let(:facts) {{
-    :osfamily => 'Debian',
+    :operatingsystem => 'Ubuntu',
   }}
 
   describe '#purge' do

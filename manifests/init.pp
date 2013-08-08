@@ -38,7 +38,7 @@ class gds_accounts (
   $purge_min_uid = undef,
   $purge_ignore = []
 ) {
-  if $::osfamily != 'Debian' {
+  if $::operatingsystem != 'Ubuntu' {
     fail("${::operatingsystem} not supported")
   }
 

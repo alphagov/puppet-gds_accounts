@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe 'gds_accounts' do
   context 'supported operating systems' do
-    %w{Debian}.each do |osfamily|
-      describe "gds_accounts class without any parameters on #{osfamily}" do
+    %w{Ubuntu}.each do |os|
+      describe "gds_accounts class without any parameters on #{os}" do
         let(:params) {{ }}
         let(:facts) {{
-          :osfamily => osfamily,
+          :operatingsystem => os,
         }}
 
         it { should contain_anchor('gds_accounts::begin') }
@@ -19,7 +19,6 @@ describe 'gds_accounts' do
   context 'unsupported operating system' do
     describe 'updatemotd class without any parameters on RedHat/CentOS' do
       let(:facts) {{
-        :osfamily        => 'RedHat',
         :operatingsystem => 'CentOS',
       }}
 
