@@ -7,8 +7,6 @@ class gds_accounts::params {
   case $::osfamily {
     'Debian': {
     }
-    'RedHat', 'Amazon': {
-    }
     default: {
       fail("${::operatingsystem} not supported")
     }
