@@ -6,12 +6,8 @@
 class gds_accounts::params {
   case $::osfamily {
     'Debian': {
-      $package_name = 'gds_accounts'
-      $service_name = 'gds_accounts'
     }
     'RedHat', 'Amazon': {
-      $package_name = 'gds_accounts'
-      $service_name = 'gds_accounts'
     }
     default: {
       fail("${::operatingsystem} not supported")

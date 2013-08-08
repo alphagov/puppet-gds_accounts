@@ -11,9 +11,8 @@ describe 'gds_accounts' do
 
         it { should include_class('gds_accounts::params') }
 
-        it { should contain_class('gds_accounts::install') }
-        it { should contain_class('gds_accounts::config') }
-        it { should contain_class('gds_accounts::service') }
+        it { should contain_anchor('gds_accounts::begin') }
+        it { should contain_anchor('gds_accounts::end') }
       end
     end
   end
