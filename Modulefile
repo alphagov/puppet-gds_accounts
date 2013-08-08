@@ -1,0 +1,10 @@
+name          'gdsoperations-gds_accounts'
+version       '0.0.1'
+source        'UNKNOWN'
+author        'Government Digital Service'
+license       'MIT'
+summary       'Manage accounts for GDS users'
+description   'Manage accounts for GDS users'
+project_page  'https://github.com/alphagov/puppet-gds_accounts'
+
+dependency 'puppetlabs/stdlib', '>= 3.0.0'
