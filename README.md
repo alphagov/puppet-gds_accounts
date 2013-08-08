@@ -1,6 +1,6 @@
 # gds_accounts
 
-Puppet module for gds_accounts.
+Puppet wrapper module for managing GDS user accounts.
 
 ## Example usage
 
@@ -20,6 +20,8 @@ gds_accounts::accounts:
     comment: John Smith
     ssh_key: XXX
 ```
+
+See class documentation for additional info.
 
 ## License
 
