@@ -21,11 +21,22 @@
 #   Integer value, minimum UID for a non-system account.
 #   Default: undef (defers to Puppet default)
 #
+# [*purge_ignore*]
+#   Array of account names to ignore when purging. This will create dummy
+#   `User { ensure => undef }` resources for each.
+#
+#   WARNING: Should only be used in development environments to prevent
+#   `vagrant` and `vboxadd` from being removed. Presents a security risk if
+#   used in production.
+#
+#   Default: []
+#
 class gds_accounts (
   $accounts = {},
   $group = 'gds',
   $purge = true,
-  $purge_min_uid = undef
+  $purge_min_uid = undef,
+  $purge_ignore = []
 ) {
   if $::osfamily != 'Debian' {
     fail("${::operatingsystem} not supported")
@@ -35,6 +46,7 @@ class gds_accounts (
   validate_string($group)
   validate_bool($purge)
   validate_re($purge_min_uid, '^([0-9]+|)$')
+  validate_array($purge_ignore)
 
   anchor { 'gds_accounts::begin': } ->
   class { 'gds_accounts::create': } ->
