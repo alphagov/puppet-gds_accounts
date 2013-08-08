@@ -10,6 +10,7 @@ describe 'gds_accounts' do
         }}
 
         it { should contain_anchor('gds_accounts::begin') }
+        it { should contain_class('gds_accounts::create') }
         it { should contain_anchor('gds_accounts::end') }
       end
     end

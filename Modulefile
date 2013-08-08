@@ -8,3 +8,4 @@ description   'Manage accounts for GDS users'
 project_page  'https://github.com/alphagov/puppet-gds_accounts'
 
 dependency 'puppetlabs/stdlib', '>= 3.0.0'
+dependency 'torrancew/account', '0.0.5'
