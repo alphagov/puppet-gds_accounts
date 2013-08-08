@@ -1,7 +1,7 @@
 require 'spec_helper_system'
 
 describe 'basic tests' do
-  it 'class should work without errors' do
+  it 'class should work without errors and be idempotent' do
     pp = <<-EOS
       class { 'gds_accounts':
         purge_ignore => ['vagrant', 'vboxadd'],
@@ -10,6 +10,8 @@ describe 'basic tests' do
 
     puppet_apply(pp) do |r|
       r.exit_code.should == 2
+      r.refresh
+      r.exit_code.should be_zero
     end
   end
 end
