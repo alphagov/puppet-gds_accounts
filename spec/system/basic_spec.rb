@@ -3,7 +3,9 @@ require 'spec_helper_system'
 describe 'basic tests' do
   it 'class should work without errors' do
     pp = <<-EOS
-      class { 'gds_accounts': }
+      class { 'gds_accounts':
+        purge_ignore => ['vagrant', 'vboxadd'],
+      }
     EOS
 
     puppet_apply(pp) do |r|
