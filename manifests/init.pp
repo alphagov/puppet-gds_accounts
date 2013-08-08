@@ -8,7 +8,10 @@
 #   Explanation of what this parameter affects and what it defaults to.
 #
 class gds_accounts (
-) inherits gds_accounts::params {
+) {
+  if $::osfamily != 'Debian' {
+    fail("${::operatingsystem} not supported")
+  }
 
   anchor { 'gds_accounts::begin': } ->
   anchor { 'gds_accounts::end': }

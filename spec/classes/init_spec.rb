@@ -9,8 +9,6 @@ describe 'gds_accounts' do
           :osfamily => osfamily,
         }}
 
-        it { should include_class('gds_accounts::params') }
-
         it { should contain_anchor('gds_accounts::begin') }
         it { should contain_anchor('gds_accounts::end') }
       end
