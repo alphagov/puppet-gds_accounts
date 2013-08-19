@@ -53,13 +53,13 @@ describe 'gds_accounts' do
     end
   end
 
-  describe '#group' do
+  describe '#groups' do
     context 'validation' do
       let(:params) { param_defaults.merge({
-        :group => ['an', 'array'],
+        :groups => 'a string',
       })}
 
-      it { expect { should }.to raise_error(Puppet::Error, /is not a string/) }
+      it { expect { should }.to raise_error(Puppet::Error, /is not an Array/) }
     end
 
     context 'defaults' do
@@ -67,17 +67,31 @@ describe 'gds_accounts' do
       it { should contain_group('gds').with_ensure('present') }
     end
 
-    context 'custom group' do
+    context 'default group, one account' do
       let(:params) { param_defaults.merge({
         :accounts => {
           'jane.smith' => {},
         },
-        :group => 'acme',
       })}
 
+      it { should contain_group('gds').with_ensure('present') }
+      it { should contain_user('jane.smith').with({
+        :groups => ['gds'],
+      })}
+    end
+
+    context 'custom groups' do
+      let(:params) { param_defaults.merge({
+        :accounts => {
+          'jane.smith' => {},
+        },
+        :groups => ['users', 'acme'],
+      })}
+
+      it { should contain_group('users').with_ensure('present') }
       it { should contain_group('acme').with_ensure('present') }
       it { should contain_user('jane.smith').with({
-        :groups => ['acme'],
+        :groups => ['users', 'acme'],
       })}
     end
   end

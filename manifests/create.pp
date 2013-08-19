@@ -6,15 +6,15 @@
 #
 class gds_accounts::create {
   $accounts = $::gds_accounts::accounts
-  $group    = $::gds_accounts::group
+  $groups   = $::gds_accounts::groups
 
-  group { $group:
+  group { $groups:
     ensure => present,
   }
 
   create_resources('account', $accounts, {
-    groups       => [$group],
+    groups       => $groups,
     create_group => false,
-    require      => Group[$group],
+    require      => Group[$groups],
   })
 }
