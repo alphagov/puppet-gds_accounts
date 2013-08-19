@@ -1,5 +1,5 @@
 name          'gdsoperations-gds_accounts'
-version       '0.0.1'
+version       '1.0.0'
 source        'UNKNOWN'
 author        'Government Digital Service'
 license       'MIT'
